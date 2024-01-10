@@ -22,7 +22,7 @@ export default class HelpCommand extends WACommand {
 *Commands:*
 ${this.commands.map(command => `*${command.usage}* - ${command.description}`).join("\n")}`);
         } else {
-            const command = this.commands.find(command => command.commandName === args[0] || command.aliases.includes(args[0]));
+            const command = this.commands.find(command => command.commandName === args[0] || command.aliases.includes(args[0] || ""));
 
             if (!command) {
                 await message.reply(`Command not found!`);

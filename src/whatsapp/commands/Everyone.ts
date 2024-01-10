@@ -6,7 +6,7 @@ import Whatsapp from "../Whatsapp";
 export default class EveryoneCommand extends WACommand {
     public static readonly commandName = "everyone";
     public static readonly description = "Mentions everyone in the group chat!";
-    public static readonly aliases = ["pa"];
+    public static readonly aliases: string[] = ["pa"];
     public static readonly usage = "/everyone";
 
     private readonly commands = _commands.sort((a, b) => a.commandName.localeCompare(b.commandName));
