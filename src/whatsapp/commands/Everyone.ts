@@ -28,6 +28,5 @@ export default class EveryoneCommand extends WACommand {
             }
             await chat.sendMessage(text, {mentions})
         }
-        return
     }
 }
