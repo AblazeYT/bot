@@ -5,11 +5,19 @@ import PongCommand from "./Pong";
 import NuhuhCommand from "./Nuhuh";
 import StickerifyCommand from "./Stickerify";
 
-export default [
-    HelpCommand,
+const commands = [
     EveryoneCommand,
     PingCommand,
     PongCommand,
     NuhuhCommand,
     StickerifyCommand,
+    // NEW COMMANDS ABOVE THIS ↑↑
+    // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
+    HelpCommand,
 ];
+
+export {
+    commands,
+};
+
+export default commands;
