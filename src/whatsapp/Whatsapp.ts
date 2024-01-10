@@ -3,7 +3,7 @@ import { generate } from "terminal-qr";
 
 import WACommand from "./commands/WACommand.base";
 import { whatsappLogger as logger } from "../logging";
-import commands from "./commands";
+import _commands from "./commands";
 import type Core from "../Core";
 export default class Whatsapp {
     private static PREFIX = "/";
@@ -20,13 +20,14 @@ export default class Whatsapp {
             authStrategy: new LocalAuth(),
         });
 
-        for (const command of commands) {
-            const cmd = new command(this);
-            this.commands.set(command.commandName, cmd);
-            logger.info(`Registered command /${command.commandName}`);
-            for (const alias of command.aliases) {
-                this.commands.set(alias, cmd);
-                logger.info(` -- Registered alias /${alias}`);
+        for (const cmdClass of _commands) {
+            const cmdObj = new cmdClass(this);
+            this.commands.set(cmdClass.commandName, cmdObj);
+            logger.debug(`Registered command /${cmdClass.commandName}`);
+
+            for (const alias of cmdClass.aliases) {
+                this.commands.set(alias, cmdObj);
+                logger.debug(` ➡  Registered alias /${alias}`);
             }
         }
     }
@@ -63,9 +64,10 @@ export default class Whatsapp {
                 const command = args.shift()?.substring(Whatsapp.PREFIX.length);
 
                 const cmd = this.commands.get(command || "");
+                console.log(command);
 
                 if (!cmd) {
-                    await message.reply(`Command not found!`);
+                    await message.reply(`[#] Command not found!`);
                     return;
                 }
 
