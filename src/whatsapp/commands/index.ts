@@ -3,6 +3,7 @@ import EveryoneCommand from "./Everyone";
 import PingCommand from "./Ping";
 import PongCommand from "./Pong";
 import NuhuhCommand from "./Nuhuh";
+import StickerifyCommand from "./Stickerify";
 
 export default [
     HelpCommand,
@@ -10,4 +11,5 @@ export default [
     PingCommand,
     PongCommand,
     NuhuhCommand,
+    StickerifyCommand,
 ];
