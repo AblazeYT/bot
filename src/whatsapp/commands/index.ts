@@ -1,5 +1,7 @@
 import HelpCommand from "./Help";
+import EveryoneCommand from "./Everyone";
 
 export default [
-    HelpCommand
+    HelpCommand,
+    EveryoneCommand,
 ];
