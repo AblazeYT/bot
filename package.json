@@ -1,0 +1,20 @@
+{
+  "name": "bot",
+  "version": "0.0.1-beta",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon src/main.ts"
+  },
+  "author": "the fece kampfs",
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "terminal-qr": "^1.0.1",
+    "whatsapp-web.js": "^1.23.0",
+    "winston": "^3.11.0"
+  }
+}
