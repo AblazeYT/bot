@@ -2,11 +2,11 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import Whatsapp from "../Whatsapp";
 
-export default class NuhuhCommand extends WACommand {
-    public static readonly commandName = "nuhuh";
-    public static readonly description = "Nuh uh!";
-    public static readonly aliases: string[] = [];
-    public static readonly usage = "/nuhuh";
+export default class StickerifyCommand extends WACommand {
+    public static readonly commandName = "stickerify";
+    public static readonly description = "Turn any image into a sticker!";
+    public static readonly aliases: string[] = ["/sticker", "/stick"];
+    public static readonly usage = "/stickerify [attach: image]";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);
@@ -25,6 +25,6 @@ export default class NuhuhCommand extends WACommand {
         else {
             return
         }
-        message.reply(image, chat.id._serialized, {sendMediaAsSticker: true})
+        await message.reply(image, chat.id._serialized, {sendMediaAsSticker: true})
     }
 }
