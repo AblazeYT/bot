@@ -64,7 +64,6 @@ export default class Whatsapp {
                 const command = args.shift()?.substring(Whatsapp.PREFIX.length);
 
                 const cmd = this.commands.get(command || "");
-                console.log(command);
 
                 if (!cmd) {
                     await message.reply(`[#] Command not found!`);
