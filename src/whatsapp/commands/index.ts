@@ -11,7 +11,7 @@ const commands = [
     NuhuhCommand,
 
     // NEW COMMANDS ABOVE THIS ↑↑
-    // DO NOT EDIT BELOW THIS ↓↓
+    // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,
 ];
 
