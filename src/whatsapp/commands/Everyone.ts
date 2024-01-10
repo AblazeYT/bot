@@ -1,4 +1,4 @@
-import { Message } from "whatsapp-web.js";
+import { Message, GroupChat, Contact } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import _commands from "./index";
 import Whatsapp from "../Whatsapp";
@@ -17,16 +17,16 @@ export default class EveryoneCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
-        const chat: any = await message.getChat()
-        let pa = ""
-        let mentions = []
+        const chat = await message.getChat() as GroupChat
+        let text = ""
+        let mentions: any[] = []
         if (chat.isGroup) {
-            for (let participant in chat.participants) {
+            for (const participant in chat.participants) {
                 const person = chat.participants[participant]
-                mentions[participant] = `${person.id.user}@c.us`
-                pa += `@${person.id.user} `
+                mentions.push(person.id._serialized)
+                text += `${person.id._serialized} `
             }
-            await chat.sendMessage(pa, {mentions: mentions})
+            await chat.sendMessage(text, {mentions})
         }
         return
     }
