@@ -30,7 +30,7 @@ ${this.commands.map(command => `*${command.usage}* - ${command.description}`).jo
             }
 
             await message.reply(`*${command.commandName}*
-${command.description}\n\n*Usage:*${command.usage}`);
+${command.description}\n\n*Usage:* ${command.usage}`);
         }
     }
 }
