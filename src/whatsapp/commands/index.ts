@@ -3,9 +3,15 @@ import EveryoneCommand from "./Everyone";
 import PingCommand from "./Ping";
 import PongCommand from "./Pong";
 
-export default [
-    HelpCommand,
+const commands = [
     EveryoneCommand,
     PingCommand,
     PongCommand,
+    HelpCommand,
 ];
+
+export {
+    commands,
+};
+
+export default commands;
