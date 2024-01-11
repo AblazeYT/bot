@@ -14,7 +14,9 @@ export default class NuhuhCommand extends WACommand {
 
     public async execute(message: Message, args: string[]) {
         const nuhuh = MessageMedia.fromFilePath("./assets/nuhuh.jpg");
+        
         if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
+        
         await message.reply(nuhuh, undefined, {sendMediaAsSticker: true});
     }
 }
