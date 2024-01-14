@@ -1,17 +1,6 @@
 export async function generate_image(prompt: string): Promise<Buffer> {
-    const urlParams = new URLSearchParams({
-        new: "true",
-        prompt: prompt,
-        model: "Realistic_Vision_V2.0.safetensors [79587710]",
-        negative_prompt: "",
 
-        steps: "20",
-        seed: Math.floor(10_000 + (Math.random() * 89_999)).toString(),
-        sampler: "Euler",
-        aspect_ratio: "square",
-    });
-
-    const res = await fetch("https://api.prodia.com/generate?" + urlParams.toString(), {
+    const res = await fetch("https://api.prodia.com/generate?new=true&prompt=" + encodeURIComponent(prompt) + "&model=Realistic_Vision_V5.0.safetensors+%5B614d1063%5D&negative_prompt=&steps=20&cfg=7&seed=3296971322&sampler=DPM%2B%2B+2M+Karras&aspect_ratio=square", {
         "headers": {
             "accept": "*/*",
             "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7",
