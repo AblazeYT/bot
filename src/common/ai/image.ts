@@ -1,11 +1,12 @@
 import proxyAgent from "https-proxy-agent";
+import getFetch from "./sob";
 const proxies = `45.90.248.189:12323:14aae7b844eaa:664b9de4cd
 194.124.144.109:12323:14aae7b844eaa:664b9de4cd
 45.91.33.180:12323:14aae7b844eaa:664b9de4cd
 185.232.167.157:12323:14aae7b844eaa:664b9de4cd
 193.3.176.193:12323:14aae7b844eaa:664b9de4cd`
 export async function generate_image(prompt: string): Promise<Buffer> {
-    const fetch = await import("node-fetch").then(m => m.default);
+    const fetch = await getFetch();
     const proxy = proxies.split("\n")[Math.floor(Math.random() * proxies.split("\n").length)].split(":");
     const res = await fetch("https://api.prodia.com/generate?new=true&prompt=" + encodeURIComponent(prompt) + "&model=Realistic_Vision_V5.0.safetensors+%5B614d1063%5D&negative_prompt=&steps=20&cfg=7&seed=3296971322&sampler=DPM%2B%2B+2M+Karras&aspect_ratio=square", {
         "headers": {
