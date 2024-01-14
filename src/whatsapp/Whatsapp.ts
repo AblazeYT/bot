@@ -12,6 +12,10 @@ export default class Whatsapp {
     private core: Core;
     private commands = new Map<string, WACommand>();
 
+    public getClient() {
+        return this.client;
+    }
+
     constructor(core: Core) {
         this.core = core;
         logger.info("Starting Whatsapp Service");

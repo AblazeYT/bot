@@ -4,6 +4,7 @@ import PingCommand from "./Ping";
 import PongCommand from "./Pong";
 import NuhuhCommand from "./Nuhuh";
 import StickerifyCommand from "./Stickerify";
+import ImagineCommand from "./Imagine";
 
 const commands = [
     EveryoneCommand,
@@ -11,6 +12,7 @@ const commands = [
     PongCommand,
     NuhuhCommand,
     StickerifyCommand,
+    ImagineCommand,
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,
