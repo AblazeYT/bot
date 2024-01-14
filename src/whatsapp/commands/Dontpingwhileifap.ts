@@ -6,7 +6,7 @@ export default class DontpingwhileifapCommand extends WACommand {
     public static readonly commandName = "dontpingwhileifap";
     public static readonly description = "it's chale's fault";
     public static readonly aliases: string[] = ["dpwif"];
-    public static readonly usage = "dontpingwhileifap";
+    public static readonly usage = "/dontpingwhileifap";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);
