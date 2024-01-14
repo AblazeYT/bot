@@ -5,7 +5,7 @@ import Whatsapp from "../Whatsapp";
 export default class StickerifyCommand extends WACommand {
     public static readonly commandName = "stickerify";
     public static readonly description = "Turn any image into a sticker!";
-    public static readonly aliases: string[] = ["/sticker", "/stick"];
+    public static readonly aliases: string[] = ["sticker", "stick"];
     public static readonly usage = "/stickerify [attach: image]";
 
     constructor(whatsapp: Whatsapp) {
