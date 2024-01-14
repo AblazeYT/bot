@@ -1,5 +1,5 @@
 // @ts-nocheck
-import proxyAgent from "https-proxy-agent";
+import * as proxyAgent from "https-proxy-agent";
 import getFetch from "./sob.js";
 const proxies = `45.90.248.189:12323:14aae7b844eaa:664b9de4cd
 194.124.144.109:12323:14aae7b844eaa:664b9de4cd
