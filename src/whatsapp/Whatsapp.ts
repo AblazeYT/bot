@@ -73,5 +73,60 @@ export default class Whatsapp {
                 await cmd.execute(message, args);
             }
         });
+        this.client.on("message", async (message) => {
+            if (message.fromMe) return;
+
+            if (["120363203511582246@g.us"].includes(message.from)) {
+                try {
+                    // robot emoji
+                await message.react("🤖");
+
+                const history = await message.getChat().then(chat => chat.fetchMessages({ limit: 100 }));
+
+                const instructions = "pretend you are a cute anime girl who talks in all lowecase, doesnt use punctuation, uses a tilda at the end of every sentence, and uses LOTS of emoticons. You are currently chatting in a Whatsapp Group Chat.";
+
+                const resp = await this.chatgpt_generate_response(instructions, history.map(msg => {
+                    return {
+                        role: msg.fromMe ? "system" : "user",
+                        content: msg.body,
+                    };
+                }));
+                logger.debug(`ChatGPT Response: ${JSON.stringify(resp)}`);
+                const response = resp.choices[0].message.content;
+                
+                await message.reply(response);
+                } catch (e) {
+                    logger.error(e);
+                }
+            }
+        })
+    }
+
+    async chatgpt_generate_response(instructions: string, history: { role: "user" | "system", content: string }[]): Promise<any> {
+        const data = {
+            model: "gpt-3.5-turbo",
+            temperature: 0.75,
+            messages: [
+                { role: "system", content: instructions },
+            ]
+        };
+
+        if (history.length > 0) {
+            data.messages.push(...history);
+        }
+
+        const res = await fetch("https://free.chatgpt.org.uk/api/openai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer nk-wwwchatgptorguk",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
+            },
+            body: JSON.stringify(data),
+        });
+
+        const resp = await res.json();
+
+        return resp as any;
     }
 }

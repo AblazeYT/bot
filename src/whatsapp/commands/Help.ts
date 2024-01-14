@@ -18,9 +18,13 @@ export default class HelpCommand extends WACommand {
 
     public async execute(message: Message, args: string[]) {
         if (args.length === 0) {
-            await message.reply(`*Bot ${process.env.npm_package_version}*\n\n
+            await message.reply(`*Bot ${process.env.npm_package_version}*\n
 *Commands:*
-${this.commands.map(command => `*${command.usage}* - ${command.description}`).join("\n")}`);
+${this.commands.map(command => `*${command.usage}* - ${command.description}`).join("\n")}
+
+Debug information:
+\`\`\`
+${(await message.getChat()).id._serialized}`);
         } else {
             const command = this.commands.find(command => command.commandName === args[0] || command.aliases.includes(args[0] || ""));
 
