@@ -17,6 +17,6 @@ export default class NuhuhCommand extends WACommand {
         
         if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
         
-        await message.reply(nuhuh, undefined, {sendMediaAsSticker: true});
+        await message.reply(nuhuh, undefined, { sendMediaAsSticker: true });
     }
 }
