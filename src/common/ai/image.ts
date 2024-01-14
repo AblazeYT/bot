@@ -23,7 +23,7 @@ export async function generate_image(prompt: string): Promise<Buffer> {
           "referrer": "https://app.prodia.com/",
           "referrerPolicy": "strict-origin-when-cross-origin",
           "method": "GET",
-          agent: new proxyAgent.HttpsProxyAgent(`http://${proxy[2]}:${proxy[3]}@${proxy[0]}:${proxy[1]}`)
+          agent: new proxyAgent(`http://${proxy[2]}:${proxy[3]}@${proxy[0]}:${proxy[1]}`)
     });
     const jobData = <{ job: string | undefined }> await res.json();
 
@@ -39,7 +39,7 @@ export async function generate_image(prompt: string): Promise<Buffer> {
                 authority: "api.prodia.com",
                 accept: "*/*",
             },
-            agent: new proxyAgent.HttpsProxyAgent(`http://${proxy[2]}:${proxy[3]}@${proxy[0]}:${proxy[1]}`)
+            agent: new proxyAgent(`http://${proxy[2]}:${proxy[3]}@${proxy[0]}:${proxy[1]}`)
         }).then(res => res.json());
 
         if (image_data.status === "succeeded") {
