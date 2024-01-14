@@ -5,6 +5,7 @@ import PongCommand from "./Pong";
 import NuhuhCommand from "./Nuhuh";
 import StickerifyCommand from "./Stickerify";
 import ImagineCommand from "./Imagine";
+import DontpingwhileifapCommand from "./Dontpingwhileifap";
 
 const commands = [
     EveryoneCommand,
@@ -13,6 +14,8 @@ const commands = [
     NuhuhCommand,
     StickerifyCommand,
     ImagineCommand,
+    DontpingwhileifapCommand,
+    
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,
