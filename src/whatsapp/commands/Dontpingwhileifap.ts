@@ -15,6 +15,6 @@ export default class DontpingwhileifapCommand extends WACommand {
     public async execute(message: Message, args: string[]) {
         const gif = MessageMedia.fromFilePath("./assets/dontpingwhileifap.mp4");
         
-        await message.reply(gif, undefined, { sendVideoAsGif: true })
+        await message.reply(gif, undefined, { sendMediaAsSticker: true })
     }
 }

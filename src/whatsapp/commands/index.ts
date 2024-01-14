@@ -14,7 +14,7 @@ const commands = [
     NuhuhCommand,
     StickerifyCommand,
     ImagineCommand,
-    // DontpingwhileifapCommand,
+    DontpingwhileifapCommand,
 
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
