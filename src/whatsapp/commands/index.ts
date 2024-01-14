@@ -13,7 +13,6 @@ const commands = [
     PongCommand,
     NuhuhCommand,
     StickerifyCommand,
-    ImagineCommand,
     DontpingwhileifapCommand,
 
     // NEW COMMANDS ABOVE THIS ↑↑
