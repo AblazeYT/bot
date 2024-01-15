@@ -7,6 +7,7 @@ import StickerifyCommand from "./Stickerify";
 import ImagineCommand from "./Imagine";
 import DontpingwhileifapCommand from "./Dontpingwhileifap";
 import FireintheholeCommand from "./Fireinthehole";
+import BurgerkingCommand from "./burgerking";
 
 const commands = [
     EveryoneCommand,
@@ -16,6 +17,7 @@ const commands = [
     StickerifyCommand,
     DontpingwhileifapCommand,
     FireintheholeCommand,
+    BurgerkingCommand,
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,
