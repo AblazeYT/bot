@@ -2,6 +2,8 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import Whatsapp from "../Whatsapp";
 
+const audio = MessageMedia.fromFilePath("./assets/fireinthehole.ogg");
+
 export default class FireintheholeCommand extends WACommand {
     public static readonly commandName = "fireinthehole";
     public static readonly description = "which hole";
@@ -13,8 +15,8 @@ export default class FireintheholeCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
-        const audio = MessageMedia.fromFilePath("./assets/fireinthehole.ogg");
         
-        await message.reply(audio, undefined, { sendAudioAsVoice: true })
+        await message.reply(audio, undefined, { sendAudioAsVoice: true });
+        
     }
 }

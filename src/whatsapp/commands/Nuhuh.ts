@@ -2,6 +2,8 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import Whatsapp from "../Whatsapp";
 
+const nuhuh = MessageMedia.fromFilePath("./assets/nuhuh.jpg");
+
 export default class NuhuhCommand extends WACommand {
     public static readonly commandName = "nuhuh";
     public static readonly description = "Nuh uh!";
@@ -13,10 +15,10 @@ export default class NuhuhCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
-        const nuhuh = MessageMedia.fromFilePath("./assets/nuhuh.jpg");
         
         if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
         
         await message.reply(nuhuh, undefined, { sendMediaAsSticker: true });
+        
     }
 }

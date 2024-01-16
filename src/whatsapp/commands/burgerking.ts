@@ -2,6 +2,8 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import Whatsapp from "../Whatsapp";
 
+const burgerking = MessageMedia.fromFilePath("./assets/burgerking.jpg");
+
 export default class BurgerkingCommand extends WACommand {
     public static readonly commandName = "burgerking";
     public static readonly description = "who is it";
@@ -13,8 +15,8 @@ export default class BurgerkingCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
-        const burgerking = MessageMedia.fromFilePath("./assets/burgerking.jpg");
+
+        await message.reply(burgerking, undefined, { sendMediaAsSticker: true });
         
-        await message.reply(burgerking, undefined, { sendMediaAsSticker: true })
     }
 }
