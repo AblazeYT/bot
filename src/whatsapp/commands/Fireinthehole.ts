@@ -2,7 +2,7 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import Whatsapp from "../Whatsapp";
 
-const audio = MessageMedia.fromFilePath("./assets/fireinthehole.ogg");
+const audio = MessageMedia.fromFilePath("./assets/fireinthehole.wav");
 
 export default class FireintheholeCommand extends WACommand {
     public static readonly commandName = "fireinthehole";
