@@ -16,7 +16,7 @@ export default class FireintheholeCommand extends WACommand {
 
     public async execute(message: Message, args: string[]) {
         
-        await message.reply(audio, undefined, { sendAudioAsVoice: true });
+        await message.reply(audio, undefined, { sendAudioAsVoice: true, caption: "fire in the hole" });
         
     }
 }
