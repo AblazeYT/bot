@@ -1,7 +1,7 @@
-```lua
-while true do
-  print("what is going on")
-end
+```typescript
+while (true) {
+  console.log("the FIRE is in the HOLE")
+}
 ```
 
 todo: make readme
