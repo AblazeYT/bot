@@ -7,7 +7,7 @@ import StickerifyCommand from "./Stickerify";
 import ImagineCommand from "./Imagine";
 import DontpingwhileifapCommand from "./Dontpingwhileifap";
 import FireintheholeCommand from "./Fireinthehole";
-import BurgerkingCommand from "./Burgerking";
+import BurgerkingCommand from "./burgerking";
 
 const commands = [
     EveryoneCommand,
