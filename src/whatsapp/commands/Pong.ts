@@ -13,6 +13,6 @@ export default class PongCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
-        await message.reply("Ping!")
+        message.reply("Ping!")
     }
 }

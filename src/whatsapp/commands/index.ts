@@ -8,6 +8,9 @@ import ImagineCommand from "./Imagine";
 import DontpingwhileifapCommand from "./Dontpingwhileifap";
 import FireintheholeCommand from "./Fireinthehole";
 import BurgerkingCommand from "./Burgerking";
+import RandomCommand from "./Random";
+import UnstickerifyCommand from "./Unstickerify";
+import SpawnCommand from "./Spawn";
 
 const commands = [
     EveryoneCommand,
@@ -18,6 +21,9 @@ const commands = [
     DontpingwhileifapCommand,
     FireintheholeCommand,
     BurgerkingCommand,
+    RandomCommand,
+    UnstickerifyCommand,
+    SpawnCommand,
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,

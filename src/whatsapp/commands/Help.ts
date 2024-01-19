@@ -1,4 +1,4 @@
-import { Message, GroupChat } from "whatsapp-web.js";
+import { Message } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 import _commands from "./index";
 import Whatsapp from "../Whatsapp";
