@@ -74,7 +74,12 @@ export default class Whatsapp {
                     return;
                 }
 
-                await cmd.execute(message, args);
+                try {await cmd.execute(message, args)}
+                catch(error) {
+                    const errorMessage = error.toString();
+                    logger.info(error);
+                    message.reply(`*Error:* ${ errorMessage }`);
+                }
             }
         });
         this.client.on("message", async (message) => {
