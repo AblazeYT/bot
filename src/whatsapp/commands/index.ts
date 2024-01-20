@@ -11,6 +11,7 @@ import BurgerkingCommand from "./Burgerking";
 import RandomCommand from "./Random";
 import UnstickerifyCommand from "./Unstickerify";
 import SpawnCommand from "./Spawn";
+import YuhuhCommand from "./Yuhuh";
 
 const commands = [
     EveryoneCommand,
@@ -24,6 +25,7 @@ const commands = [
     RandomCommand,
     UnstickerifyCommand,
     SpawnCommand,
+    YuhuhCommand,
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,
