@@ -76,8 +76,8 @@ export default class Whatsapp {
 
                 try {await cmd.execute(message, args)}
                 catch(error) {
-                    const errorMessage = error.toString();
-                    logger.info(error);
+                    const errorMessage = String(error);
+                    logger.info(errorMessage);
                     message.reply(`*Error:* ${ errorMessage }`);
                 }
             }
