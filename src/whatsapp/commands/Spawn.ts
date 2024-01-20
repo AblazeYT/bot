@@ -7,7 +7,7 @@ const car = MessageMedia.fromFilePath("./assets/car.jpg");
 export default class SpawnCommand extends WACommand {
     public static readonly commandName = "spawn";
     public static readonly description = "Spawn something!";
-    public static readonly aliases: string[] = [];
+    public static readonly aliases: string[] = ["summon"];
     public static readonly usage = "/spawn [thing]";
 
     constructor(whatsapp: Whatsapp) {
