@@ -13,6 +13,8 @@ export default class EveryoneCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
+        if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
+
         const chat = await message.getChat() as GroupChat
         let mentions: any[] = []
         if (chat.isGroup) {
@@ -20,7 +22,8 @@ export default class EveryoneCommand extends WACommand {
                 const person = chat.participants[participant]
                 mentions.push(person.id._serialized)
             }
-            await chat.sendMessage(mentions.map(x => "@" + x.split("@")[0]).join(" "), {mentions})
+
+            await message.reply(mentions.map(x => "@" + x.split("@")[0]).join(" "), undefined, {mentions})
         }
     }
 }
