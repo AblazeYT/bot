@@ -6,7 +6,7 @@ export default class UnstickerifyCommand extends WACommand {
     public static readonly commandName = "unstickerify";
     public static readonly description = "Turn any sticker into an image!";
     public static readonly aliases: string[] = ["unsticker", "unstick"];
-    public static readonly usage = "/unstickerify [attach: sticker/gif]";
+    public static readonly usage = "unstickerify [attach: sticker/gif]";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

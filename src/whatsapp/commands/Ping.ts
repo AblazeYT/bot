@@ -6,7 +6,7 @@ export default class PingCommand extends WACommand {
     public static readonly commandName = "ping";
     public static readonly description = "Pong!";
     public static readonly aliases: string[] = [];
-    public static readonly usage = "/ping";
+    public static readonly usage = "ping";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

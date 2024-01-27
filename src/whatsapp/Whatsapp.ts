@@ -6,7 +6,7 @@ import { whatsappLogger as logger } from "../logging";
 import _commands from "./commands";
 import type Core from "../Core";
 export default class Whatsapp {
-    private static PREFIX = "/";
+    public static PREFIX = "/";
 
     private client: Client;
     private core: Core;
@@ -27,11 +27,11 @@ export default class Whatsapp {
         for (const cmdClass of _commands) {
             const cmdObj = new cmdClass(this);
             this.commands.set(cmdClass.commandName, cmdObj);
-            logger.debug(`Registered command /${cmdClass.commandName}`);
+            logger.debug(`Registered command ${Whatsapp.PREFIX}${cmdClass.commandName}`);
 
             for (const alias of cmdClass.aliases) {
                 this.commands.set(alias, cmdObj);
-                logger.debug(` ➡  Registered alias /${alias}`);
+                logger.debug(` ➡  Registered alias ${Whatsapp.PREFIX}${alias}`);
             }
         }
     }

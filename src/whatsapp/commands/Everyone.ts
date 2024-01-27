@@ -6,7 +6,7 @@ export default class EveryoneCommand extends WACommand {
     public static readonly commandName = "everyone";
     public static readonly description = "Mentions everyone in the group chat!";
     public static readonly aliases: string[] = ["pa", "@everyone"];
-    public static readonly usage = "/everyone";
+    public static readonly usage = "everyone";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

@@ -8,7 +8,7 @@ export default class FireintheholeCommand extends WACommand {
     public static readonly commandName = "fireinthehole";
     public static readonly description = "which hole";
     public static readonly aliases: string[] = ["fire", "hole"];
-    public static readonly usage = "/fireinthehole";
+    public static readonly usage = "fireinthehole";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

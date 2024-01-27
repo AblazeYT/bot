@@ -8,7 +8,7 @@ export default class BurgerkingCommand extends WACommand {
     public static readonly commandName = "burgerking";
     public static readonly description = "who is it";
     public static readonly aliases: string[] = ["whoistheburgerking"];
-    public static readonly usage = "/burgerking";
+    public static readonly usage = "burgerking";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

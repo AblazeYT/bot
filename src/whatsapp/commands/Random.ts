@@ -10,7 +10,7 @@ export default class RandomCommand extends WACommand {
     public static readonly commandName = "random";
     public static readonly description = "Generate a random number!";
     public static readonly aliases: string[] = ["rand"];
-    public static readonly usage = "/random [min] [max]";
+    public static readonly usage = "random [min] [max]";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

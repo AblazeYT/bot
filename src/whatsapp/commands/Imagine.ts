@@ -8,7 +8,7 @@ export default class ImagineCommand extends WACommand {
     public static readonly commandName = "imagine";
     public static readonly description = "Generates an image based on the text you provide using artificial intelligence";
     public static readonly aliases = ["im"];
-    public static readonly usage = "/imagine [gpt?] [prompt]";
+    public static readonly usage = "imagine [gpt?] [prompt]";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);

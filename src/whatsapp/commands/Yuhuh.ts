@@ -8,7 +8,7 @@ export default class YuhuhCommand extends WACommand {
     public static readonly commandName = "yuhuh";
     public static readonly description = "Yuh uh!";
     public static readonly aliases: string[] = [];
-    public static readonly usage = "/yuhuh";
+    public static readonly usage = "yuhuh";
 
     constructor(whatsapp: Whatsapp) {
         super(whatsapp);
