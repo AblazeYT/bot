@@ -22,6 +22,7 @@ export default class Whatsapp {
 
         this.client = new Client({
             authStrategy: new LocalAuth(),
+            puppeteer: { args: [ '--no-sandbox' ] },
         });
 
         for (const cmdClass of _commands) {
