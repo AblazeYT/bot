@@ -31,7 +31,7 @@ export default class Statistics {
         else {return null}
     }
     
-    public static async write(newData) {
+    public static async write(newData: any) {
         const jsonData: string = JSON.stringify(newData);
         await fs.writeFileSync(Statistics.path, jsonData, {encoding: "utf8"});
         return newData;
@@ -58,7 +58,7 @@ export default class Statistics {
         return newData;
     }
 
-    public static async writeChat(chat: Chat, newData) {
+    public static async writeChat(chat: Chat, newData: any) {
         const chatId = chat.id._serialized;
         let data = await Statistics.read();
         data.chats[chatId] = newData;
