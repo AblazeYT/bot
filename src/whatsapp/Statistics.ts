@@ -13,6 +13,9 @@ export default class Statistics {
     };
 
     public static async read() {
+        if (!fs.existsSync(Statistics.path)) {
+            fs.writeFileSync(Statistics.path, "");
+        }
         let file: string = await fs.readFileSync(Statistics.path, "utf8");
         if (file.length == 0) {
             file = Statistics.jsonTemplate;

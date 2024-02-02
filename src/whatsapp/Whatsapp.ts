@@ -5,6 +5,7 @@ import WACommand from "./commands/WACommand.base";
 import { whatsappLogger as logger } from "../logging";
 import _commands from "./commands";
 import type Core from "../Core";
+import Stats from "./Statistics";
 export default class Whatsapp {
     public static PREFIX = "/";
 
@@ -62,8 +63,8 @@ export default class Whatsapp {
 
     registerRuntimeListeners() {
         this.client.on("message_create", async (message) => {
-            //if (message.fromMe) return;
-
+            Stats.handleMessage(message);
+            if (message.fromMe) return;
             if (message.body.startsWith(Whatsapp.PREFIX)) {
                 const args = message.body.split(" ");
                 const command = args.shift()?.substring(Whatsapp.PREFIX.length);
