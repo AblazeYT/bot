@@ -18,5 +18,8 @@
     "terminal-qr": "^1.0.1",
     "whatsapp-web.js": "^1.23.0",
     "winston": "^3.11.0"
+  },
+  "nodemonConfig": {
+    "ignore": ["src/statistics.json"]
   }
 }
