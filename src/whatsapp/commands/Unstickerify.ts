@@ -13,6 +13,7 @@ export default class UnstickerifyCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
+        message.react('⏳')
         let image: MessageMedia
         if (message.hasMedia) {
             image = await message.downloadMedia()
@@ -24,6 +25,7 @@ export default class UnstickerifyCommand extends WACommand {
         else {
             return
         }
-        message.reply(image, undefined, { sendMediaAsSticker: false })
+        await message.reply(image, undefined, { sendMediaAsSticker: false })
+        message.react('✅')
     }
 }

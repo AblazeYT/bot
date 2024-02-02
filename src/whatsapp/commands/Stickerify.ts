@@ -13,6 +13,7 @@ export default class StickerifyCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
+        message.react('⏳')
         const chat = await message.getChat()
         let image: MessageMedia
         if (message.hasMedia) {
@@ -25,6 +26,7 @@ export default class StickerifyCommand extends WACommand {
         else {
             return
         }
-        message.reply(image, chat.id._serialized, {sendMediaAsSticker: true})
+        await message.reply(image, chat.id._serialized, {sendMediaAsSticker: true})
+        message.react('✅')
     }
 }

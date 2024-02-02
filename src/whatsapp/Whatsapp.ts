@@ -61,14 +61,14 @@ export default class Whatsapp {
     }
 
     registerRuntimeListeners() {
-        this.client.on("message", async (message) => {
-            if (message.fromMe) return;
+        this.client.on("message_create", async (message) => {
+            //if (message.fromMe) return;
 
             if (message.body.startsWith(Whatsapp.PREFIX)) {
                 const args = message.body.split(" ");
                 const command = args.shift()?.substring(Whatsapp.PREFIX.length);
 
-                const cmd = this.commands.get(command || "");
+                const cmd = this.commands.get(command?.toLowerCase() || "");
 
                 if (!cmd) {
                     await message.reply(`[#] Command not found!`);

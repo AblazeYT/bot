@@ -15,8 +15,9 @@ export default class DontpingwhileifapCommand extends WACommand {
     }
 
     public async execute(message: Message, args: string[]) {
-
+        message.react('⏳')
+        if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
         await message.reply(gif, undefined, { sendMediaAsSticker: true });
-
+        message.react('✅')
     }
 }

@@ -4,7 +4,6 @@ import PingCommand from "./Ping";
 import PongCommand from "./Pong";
 import NuhuhCommand from "./Nuhuh";
 import StickerifyCommand from "./Stickerify";
-import ImagineCommand from "./Imagine";
 import DontpingwhileifapCommand from "./Dontpingwhileifap";
 import FireintheholeCommand from "./Fireinthehole";
 import BurgerkingCommand from "./Burgerking";
@@ -12,6 +11,8 @@ import RandomCommand from "./Random";
 import UnstickerifyCommand from "./Unstickerify";
 import SpawnCommand from "./Spawn";
 import YuhuhCommand from "./Yuhuh";
+import AlfieCommand from "./Alfieelliott";
+import StatsCommand from "./Stats";
 
 const commands = [
     EveryoneCommand,
@@ -26,6 +27,8 @@ const commands = [
     UnstickerifyCommand,
     SpawnCommand,
     YuhuhCommand,
+    AlfieCommand,
+    StatsCommand,
     // NEW COMMANDS ABOVE THIS ↑↑
     // DO NOT EDIT BELOW THIS, OR COMMAND WILL BE BLACKHOLED ↓↓
     HelpCommand,
