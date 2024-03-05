@@ -1,25 +1,22 @@
 {
   "name": "bot",
-  "version": "1.2 Beta",
-  "description": "",
+  "version": "1.0.0 pre-release",
+  "description": "```typescript\r while (true) {\r   console.log(\"the FIRE is not in the hole.\")\r }\r ```",
+  "main": "src/main",
   "scripts": {
-    "dev": "nodemon src/main.ts"
+    "start": "node out/main.js",
+    "build": "tsc",
+    "test": "tsc && node out/main.js"
   },
-  "author": "the fece kampfs",
-  "devDependencies": {
-    "nodemon": "^3.0.2",
-    "ts-node": "^10.9.2",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+  "repository": {
+    "type": "git",
+    "url": ".git"
   },
+  "author": "AblazeYT",
+  "license": "ISC",
   "dependencies": {
-    "https-proxy-agent": "^7.0.2",
-    "node-fetch": "^3.3.2",
+    "puppeteer": "^22.3.0",
     "terminal-qr": "^1.0.1",
-    "whatsapp-web.js": "^1.23.0",
-    "winston": "^3.11.0"
-  },
-  "nodemonConfig": {
-    "ignore": ["src/statistics.json"]
+    "whatsapp-web.js": "^1.23.0"
   }
 }

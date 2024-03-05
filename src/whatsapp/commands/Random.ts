@@ -1,20 +1,15 @@
 import { Message } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
-import Whatsapp from "../Whatsapp";
 
 function randint (min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-export default class RandomCommand extends WACommand {
+class RandomCommand extends WACommand {
     public static readonly commandName = "random";
     public static readonly description = "Generate a random number!";
     public static readonly aliases: string[] = ["rand"];
     public static readonly usage = "random [min] [max]";
-
-    constructor(whatsapp: Whatsapp) {
-        super(whatsapp);
-    }
 
     public async execute(message: Message, args: string[]) {
         if (args.length === 0) {
@@ -34,4 +29,9 @@ export default class RandomCommand extends WACommand {
         
         return
     }
+}
+
+export {
+    RandomCommand,
+    randint,
 }

@@ -1,3 +1,2 @@
-import Core from "./Core";
-
-Core.init();
+import Whatsapp from "./whatsapp/Whatsapp";
+Whatsapp.start();

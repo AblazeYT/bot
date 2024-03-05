@@ -11,11 +11,6 @@ export default class HelpCommand extends WACommand {
 
     private readonly commands = _commands.sort((a, b) => a.commandName.localeCompare(b.commandName));
 
-
-    constructor(whatsapp: Whatsapp) {
-        super(whatsapp);
-    }
-
     public async execute(message: Message, args: string[]) {
         if (args.length === 0) {
             await message.reply(`*Bot ${process.env.npm_package_version}*\n

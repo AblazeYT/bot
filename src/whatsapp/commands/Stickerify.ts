@@ -1,16 +1,11 @@
 import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
-import Whatsapp from "../Whatsapp";
 
 export default class StickerifyCommand extends WACommand {
     public static readonly commandName = "stickerify";
     public static readonly description = "Turn any image into a sticker!";
     public static readonly aliases: string[] = ["sticker", "stick"];
     public static readonly usage = "stickerify [attach: image/video]";
-
-    constructor(whatsapp: Whatsapp) {
-        super(whatsapp);
-    }
 
     public async execute(message: Message, args: string[]) {
         message.react('⏳')

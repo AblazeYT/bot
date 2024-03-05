@@ -1,2 +1,5 @@
 /node_modules
 /.wwebjs*
+/tsconfig.json
+/src/statistics.json
+/out
