@@ -90,7 +90,6 @@ export default class Statistics {
         if (newData == null) {
             newData = Statistics.initTemplate
             newData["timeStartedCounting"] = new Date().toJSON();
-            await Statistics.writeChat(chat, newData);
         }
         else if (!("statVersion" in newData) || newData["statVersion"] != this.statVersion) {
             newData = Statistics.initTemplate
@@ -100,16 +99,17 @@ export default class Statistics {
             }
             newData["timeStartedCounting"] = new Date().toJSON();
             newData["statVersion"] = this.statVersion;
-            await Statistics.writeChat(chat, newData);
         }
+        await Statistics.writeChat(chat, newData);
         return newData;
     }
 
     public static async writeChat(chat: Chat, newData: any) {
         const chatId = chat.id._serialized;
         let data = await Statistics.read();
-        data.chats[chatId] = newData;
-        return await Statistics.write(data);
+        let dataToWrite = Object.assign({}, data)
+        dataToWrite.chats[chatId] = newData
+        return await Statistics.write(dataToWrite);
     }
 
     public static async updateStatistic(chat: Chat, stat: string, newValue: number) {
@@ -127,9 +127,9 @@ export default class Statistics {
     public static async handleMessage(message: Message) {
         const chat = await message.getChat();
         const mentions = await message.getMentions()
-        Statistics.incrementStatistic(chat, "messagesSent", 1);
         Statistics.incrementStatistic(chat, "mentions", mentions.length)
         if (message.hasMedia) {Statistics.incrementStatistic(chat, "mediaSent", 1)}
+        if (message.body) {Statistics.incrementStatistic(chat, "messagesSent", 1)}
     }
 
     public static async handleMessageDelete(message: Message) {

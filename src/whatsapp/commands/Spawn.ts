@@ -3,6 +3,7 @@ import { shortFromChat } from "./Short";
 import WACommand from "./WACommand.base";
 
 const car = MessageMedia.fromFilePath("./assets/car.jpg");
+const kervin = MessageMedia.fromFilePath("./assets/kervin.jpg");
 
 export default class SpawnCommand extends WACommand {
     public static readonly commandName = "spawn";
@@ -21,6 +22,9 @@ export default class SpawnCommand extends WACommand {
                     break
                 case "short":
                     await shortFromChat(message);
+                    break
+                case "kervin":
+                    await message.reply(kervin, undefined, { sendMediaAsSticker: true })
                     break
                 default:
                     message.reply("You can't spawn that! ")

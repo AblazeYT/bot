@@ -5,7 +5,7 @@ import WACommand from "./WACommand.base";
 export default class StatsCommand extends WACommand {
     public static readonly commandName = "stats";
     public static readonly description = "View statistics for this chat! ";
-    public static readonly aliases: string[] = ["statistics", "stat", "info"];
+    public static readonly aliases: string[] = ["statistics", "stat", "info", "statisticsgcse", "statsgcse", "kervin"];
     public static readonly usage = "stats";
 
     public async execute(message: Message, args: string[]) {
@@ -42,7 +42,7 @@ export default class StatsCommand extends WACommand {
             amountOfParticipants = 1
         }
         const timeStarted = new Date(Date.parse(data.timeStartedCounting))
-        const outputMessage = `*Statistics for "${chat.name}"*\n*${amountOfParticipants}* participant${amountOfParticipants == 1 ? '' : 's'}\n*${data.messagesSent}* message${data.messagesSent == 1 ? '' : 's'} sent\nMedia sent *${data.mediaSent}* time${data.mediaSent == 1 ? '' : 's'}\n*${data.mentions}* ${data.mentions == 1 ? "person" : "people"} mentioned\n\n\nRecorded since ${timeStarted.toUTCString()}`
+        const outputMessage = `*Statistics for "${chat.name}"*\n*${data.messagesSent}* message${data.messagesSent == 1 ? '' : 's'} sent\nMedia sent *${data.mediaSent}* time${data.mediaSent == 1 ? '' : 's'}\n*${data.mentions}* ${data.mentions == 1 ? "person" : "people"} mentioned\n\n\nRecorded since ${timeStarted.toUTCString()}`
         message.reply(outputMessage)
     }
 }
