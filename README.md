@@ -1,7 +1,3 @@
-```typescript
-while (true) {
-  console.log("the FIRE is in the HOLE")
-}
-```
+yippee
 
 todo: make readme
