@@ -1,12 +1,11 @@
 {
   "name": "bot",
-  "version": "1.0.0 pre-release",
-  "description": "```typescript\r while (true) {\r   console.log(\"the FIRE is not in the hole.\")\r }\r ```",
+  "version": "1.0.0",
+  "description": "yippee",
   "main": "src/main",
   "scripts": {
-    "start": "node out/main.js",
     "build": "tsc",
-    "test": "tsc && node out/main.js"
+    "run": "tsc && node out/main.js"
   },
   "repository": {
     "type": "git",
