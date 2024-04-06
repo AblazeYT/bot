@@ -19,6 +19,8 @@ export default class StickerifyCommand extends WACommand {
             image = await originalMsg.downloadMedia()
         }
         else {
+            message.react('❌')
+            message.reply("No media attached! ")
             return
         }
         await message.reply(image, chat.id._serialized, {sendMediaAsSticker: true})

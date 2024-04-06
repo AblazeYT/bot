@@ -1,11 +1,11 @@
 {
   "name": "bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "yippee",
   "main": "src/main",
   "scripts": {
     "build": "tsc",
-    "run": "tsc && node out/main.js"
+    "bot": "tsc && node out/main.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,6 @@
   "dependencies": {
     "puppeteer": "^22.3.0",
     "terminal-qr": "^1.0.1",
-    "whatsapp-web.js": "^1.23.0"
+    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#webpack-exodus"
   }
 }

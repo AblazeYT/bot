@@ -10,9 +10,8 @@ export default class FireintheholeCommand extends WACommand {
     public static readonly usage = "fireinthehole";
 
     public async execute(message: Message, args: string[]) {
-        message.react('⏳')
-        console.log(audio)
+        message.react('⏳');
         await message.reply(audio, undefined, { sendAudioAsVoice: true, caption: "fire in the hole" });
-        message.react('✅')
+        message.react('✅');
     }
 }

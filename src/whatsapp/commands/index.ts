@@ -17,7 +17,9 @@ import Stats from "./Stats";
 import Yuhuh from "./Yuhuh";
 import { ShortCommand } from "./Short";
 import Pong2 from "./Pong2";
+import Ban from "./Ban";
 import WACommand from "./WACommand.base";
+import Unban from "./Unban";
 
 const Commands = [
     ShortCommand,
@@ -38,6 +40,8 @@ const Commands = [
     Contact,
     Countshorts,
     Pong2,
+    Ban,
+    Unban,
     //
     //
     Help,

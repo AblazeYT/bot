@@ -8,9 +8,9 @@ export default class AlfieCommand extends WACommand {
     public static readonly usage = "alfieelliott";
 
     public async execute(message: Message, args: string[]) {
-        message.react('⏳')
-        if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
+        message.react('⏳');
+        if (message.hasQuotedMsg) {message = await message.getQuotedMessage()}
         await message.reply("www.roblox.com/users/3759730738/profile?friendshipSourceType=PlayerSearch", undefined, { linkPreview: true });
-        message.react('✅')
+        message.react('✅');
     }
 }

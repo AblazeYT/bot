@@ -10,9 +10,9 @@ export default class BurgerkingCommand extends WACommand {
     public static readonly usage = "burgerking";
 
     public async execute(message: Message, args: string[]) {
-        message.react('⏳')
-        if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}
+        message.react('⏳');
+        if (message.hasQuotedMsg) {message = await message.getQuotedMessage()}
         await message.reply(burgerking, undefined, { sendMediaAsSticker: true });
-        message.react('✅')
+        message.react('✅');
     }
 }

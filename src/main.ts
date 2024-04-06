@@ -1,2 +1,3 @@
 import Whatsapp from "./whatsapp/Whatsapp";
-Whatsapp.start();
+const instance = new Whatsapp();
+instance.start();

@@ -1,4 +1,4 @@
-import { Client, LocalAuth } from "whatsapp-web.js";
+import { Client, GroupChat, LocalAuth } from "whatsapp-web.js";
 import { generate } from "terminal-qr";
 
 import WACommand from "./commands/WACommand.base";
@@ -11,12 +11,15 @@ export default class Whatsapp {
     public static client: Client;
     public static commands = new Map<string, WACommand>();
 
-    public static start() {
+    public start() {
         console.log("Starting Whatsapp Service");
 
         Whatsapp.client = new Client({
             authStrategy: new LocalAuth(),
-            puppeteer: { args: [ '--no-sandbox' ] }
+            puppeteer: { 
+                args: [ '--no-sandbox' ],
+                executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+            }
         });
 
         _commands.map((command) => {
@@ -59,7 +62,7 @@ export default class Whatsapp {
 
                 if (!cmd) {
                     await message.reply(`*[#]* Command not found!`);
-                    return;
+                    return
                 }
 
                 try {await cmd.execute(message, args)}
@@ -70,5 +73,12 @@ export default class Whatsapp {
                 }
             }
         });
+        Whatsapp.client.on("group_join", async (notification) => {
+            const chat = await notification.getChat() as GroupChat;
+            const contact = await notification.getContact();
+            if ((await Stats.getBannedUsers(chat)).indexOf(contact.id._serialized) != -1) {
+                await chat.removeParticipants([contact.id._serialized])
+            }
+        })
     }
 }
