@@ -11,11 +11,8 @@ export default class UnstickerifyCommand extends WACommand {
         message.react('⏳')
         let image: MessageMedia
         if (message.hasMedia) {
+            if (message.hasQuotedMsg) {message = await message.getQuotedMessage()}
             image = await message.downloadMedia()
-        }
-        else if (message.hasQuotedMsg) {
-            const originalMsg = await message.getQuotedMessage()
-            image = await originalMsg.downloadMedia()
         }
         else {
             message.react('❌')

@@ -134,34 +134,25 @@ export default class Statistics {
         return await Statistics.write(dataToWrite);
     }
 
-    public static async updateStatistic(chat: Chat, stat: string, newValue: number) {
-        let data = await Statistics.validateChat(chat);
-        data[stat] = newValue;
-        return await Statistics.writeChat(chat, data);
-    }
-
-    public static async incrementStatistic(chat: Chat, stat: string, incrementBy: number) {
-        let data = await Statistics.validateChat(chat);
-        data[stat] += incrementBy;
-        return await Statistics.writeChat(chat, data);
-    }
-
     public static async handleMessage(message: Message) {
         const chat = await message.getChat();
+        const data = await Statistics.validateChat(chat)
         const mentions = await message.getMentions()
-        Statistics.incrementStatistic(chat, "mentions", mentions.length)
-        if (message.hasMedia) {Statistics.incrementStatistic(chat, "mediaSent", 1)}
-        if (message.body) {Statistics.incrementStatistic(chat, "messagesSent", 1)}
+        data.messagesSent += 1
+        data.mentions += mentions.length
+        if (message.hasMedia) {data.mediaSent += 1}
+        return await Statistics.writeChat(chat, data);
     }
-    // needs to be optimised - it calls incrementStatistic 3 times
 
     public static async handleMessageDelete(message: Message) {
         try {
             const chat = await message.getChat();
-            const mentions = await message.getMentions()
-            Statistics.incrementStatistic(chat, "messagesSent", -1);
-            Statistics.incrementStatistic(chat, "mentions", -mentions.length)
-            if (message.hasMedia) {Statistics.incrementStatistic(chat, "mediaSent", -1)}
+            const data = await Statistics.validateChat(chat);
+            const mentions = await message.getMentions();
+            data.messagesSent -= 1;
+            data.mentions -= mentions.length;
+            if (message.hasMedia) {data.mediaSent -= 1}
+            return await Statistics.writeChat(chat, data);
         }
         catch (error) {
             return
