@@ -1,7 +1,7 @@
 {
   "name": "bot",
-  "version": "1.0.1",
-  "description": "yippee",
+  "version": "1.0.2",
+  "description": "a whatsapp bot",
   "main": "src/main",
   "scripts": {
     "build": "tsc",
