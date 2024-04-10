@@ -1,13 +1,13 @@
 import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 
-const gif = MessageMedia.fromFilePath("./assets/dontpingwhileifap.mp4");
+const gif: MessageMedia = MessageMedia.fromFilePath("./assets/dontpingwhileifap.mp4");
 
 export default class DontpingwhileifapCommand extends WACommand {
     public static readonly commandName = "dontpingwhileifap";
     public static readonly description = "it's chale's fault";
     public static readonly aliases: string[] = ["dpwif"];
-    public static readonly usage = "dontpingwhileifap";
+    public static readonly usage = "";
 
     public async execute(message: Message, args: string[]) {
         message.react('⏳')

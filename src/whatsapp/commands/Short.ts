@@ -18,7 +18,7 @@ class ShortCommand extends WACommand {
     public static readonly commandName = "short";
     public static readonly description = "Get a Youtube short";
     public static readonly aliases: string[] = ["giveshortnow"];
-    public static readonly usage = "short";
+    public static readonly usage = "";
 
     public async execute(message: Message, args: string[]) {
         if (args.length > 0) {

@@ -6,7 +6,7 @@ export default class StatsCommand extends WACommand {
     public static readonly commandName = "stats";
     public static readonly description = "View statistics for this chat! ";
     public static readonly aliases: string[] = ["statistics", "stat", "info", "statisticsgcse", "statsgcse", "kervin"];
-    public static readonly usage = "stats";
+    public static readonly usage = "🛡️[.reset?]";
 
     public async execute(message: Message, args: string[]) {
         const chat: any = await message.getChat();

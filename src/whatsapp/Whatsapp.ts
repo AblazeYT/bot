@@ -6,7 +6,7 @@ import _commands from "./commands";
 import Stats from "./Statistics";
 
 export default class Whatsapp {
-    public static PREFIX = "/";
+    public static prefixList = ["/", "slash "];
 
     public static client: Client;
     public static commands = new Map<string, WACommand>();
@@ -25,11 +25,11 @@ export default class Whatsapp {
         _commands.map((command) => {
             const cmdObject = new command();
             Whatsapp.commands.set(command.commandName, cmdObject);
-            console.log(`Registered ${Whatsapp.PREFIX}${command.commandName}`);
+            console.log(`Registered ${command.commandName}`);
 
             for (const alias of command.aliases) {
                 Whatsapp.commands.set(alias, cmdObject);
-                console.log(` ➡  Registered alias ${Whatsapp.PREFIX}${alias}`);
+                console.log(` ➡  Registered alias ${alias}`);
             }
         })
 
@@ -53,19 +53,33 @@ export default class Whatsapp {
 
     private static registerRuntimeListeners() {
         Whatsapp.client.on("message_create", async (message) => {
-            Stats.handleMessage(message);
+            //Stats.handleMessage(message);
             //if (message.fromMe) return;
-            if (message.body.startsWith(Whatsapp.PREFIX)) {
-                const args = message.body.split(" ");
-                const command = args.shift()?.substring(Whatsapp.PREFIX.length);
-                const cmd = this.commands.get(command?.toLowerCase() || "");
+            let prefixUsed = ""; // is the user trying to execute a command
+            for (const prefix of Whatsapp.prefixList) {
+                if (message.body.toLowerCase().startsWith(prefix.toLowerCase())) {
+                    prefixUsed = prefix; // we might need to know the prefix they used later in commands such as help
+                }
+            }
+            if (prefixUsed !== "") {
+                let args = message.body.substring(prefixUsed.length).split(" ")
+                const command = args.shift()
+                let cmd = this.commands.get(command?.toLowerCase() || "");
 
-                if (!cmd) {
-                    await message.reply(`*[#]* Command not found!`);
-                    return
+                if (!cmd) { // this is how aliases with spaces work
+                    let commandCopy = command
+                    let argsCopy = args
+                    while (!cmd && argsCopy.length > 0) {
+                        commandCopy += ` ${argsCopy.shift()}`
+                        cmd = this.commands.get(commandCopy?.toLowerCase() || "")
+                    }
+                    if (!cmd) {
+                        await message.reply(`*[#]* Command not found!`);
+                        return
+                    }
                 }
 
-                try {await cmd.execute(message, args)}
+                try {await cmd.execute(message, args, prefixUsed)}
                 catch(error) {
                     const errorMessage = String(error);
                     console.log(`*[Error]*: ${errorMessage}`);

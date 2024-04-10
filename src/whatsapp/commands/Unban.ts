@@ -7,7 +7,7 @@ export default class UnbanCommand extends WACommand {
     public static readonly commandName = "unban";
     public static readonly description = "unyippee";
     public static readonly aliases: string[] = ["unkill"];
-    public static readonly usage = "unban";
+    public static readonly usage = "Work in Progress";
 
     public async execute(message: Message, args: string[]) {
         message.react('⏳');

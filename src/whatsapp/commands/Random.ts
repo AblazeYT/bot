@@ -1,15 +1,15 @@
 import { Message } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 
-function randint (min: number, max: number): number {
+function randint(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 class RandomCommand extends WACommand {
     public static readonly commandName = "random";
     public static readonly description = "Generate a random number!";
-    public static readonly aliases: string[] = ["rand"];
-    public static readonly usage = "random [min] [max]";
+    public static readonly aliases: string[] = ["rand", "randint", "randomnumber"];
+    public static readonly usage = "[min] [max]";
 
     public async execute(message: Message, args: string[]) {
         if (args.length === 0) {
@@ -19,7 +19,7 @@ class RandomCommand extends WACommand {
             const min: number = parseFloat(args[0])
             const max: number = parseFloat(args[1])
             if (Number.isInteger(min) && Number.isInteger(max)) {
-                const randomNumber = randint(min, max)
+                const randomNumber: number = randint(min, max)
                 message.reply(`Your number is ${randomNumber.toString()}!`)
             }
             else {

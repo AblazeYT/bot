@@ -16,6 +16,8 @@ import Yuhuh from "./Yuhuh";
 import { ShortCommand } from "./Short";
 import Ban from "./Ban";
 import Unban from "./Unban";
+import Dunk from "./Dunk";
+import Admin from "./Admin";
 
 export default [
     ShortCommand,
@@ -35,6 +37,8 @@ export default [
     Countshorts,
     Ban,
     Unban,
+    Dunk,
+    Admin,
     //
     //
     Help,

@@ -5,9 +5,9 @@ export default class PingCommand extends WACommand {
     public static readonly commandName = "ping";
     public static readonly description = "Pong!";
     public static readonly aliases: string[] = [];
-    public static readonly usage = "ping";
+    public static readonly usage = "";
 
     public async execute(message: Message, args: string[]) {
-        message.reply("Pong!");
+        await message.reply("Pong!");
     }
 }

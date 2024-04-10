@@ -1,13 +1,13 @@
 import { Message, MessageMedia } from "whatsapp-web.js";
 import WACommand from "./WACommand.base";
 
-const burgerking = MessageMedia.fromFilePath("./assets/burgerking.jpg");
+const burgerking: MessageMedia = MessageMedia.fromFilePath("./assets/burgerking.jpg");
 
 export default class BurgerkingCommand extends WACommand {
     public static readonly commandName = "burgerking";
     public static readonly description = "who is it";
     public static readonly aliases: string[] = ["whoistheburgerking"];
-    public static readonly usage = "burgerking";
+    public static readonly usage = "";
 
     public async execute(message: Message, args: string[]) {
         message.react('⏳');

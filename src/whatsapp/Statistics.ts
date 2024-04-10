@@ -4,7 +4,7 @@ import Whatsapp from "./Whatsapp";
 
 export default class Statistics {
     private static path = "src/whatsapp/statistics.json"
-    private static jsonTemplate = '{\n    "chats": {\n    },\n    "admins": {\n    }\n}'
+    private static jsonTemplate = '{"chats": {}, "admins": []}'
     private static statVersion = 1.3 // increment this whenever there is an update to the template
     private static initTemplate = {
         "messagesSent": 0,
@@ -33,40 +33,37 @@ export default class Statistics {
         return data.admins
     }
 
-    public static async addAdmin(contact: Contact) {
+    public static async addAdmins(contacts: Contact[]) {
         const data = await Statistics.read();
-        data.admins.push(contact.id._serialized);
-        await Statistics.write(data);
-        return contact
+        let dataToWrite = Object.assign({}, data)
+        for (const contact of contacts) {dataToWrite.admins.push(contact.id._serialized)}
+        await Statistics.write(dataToWrite);
     }
 
-    public static async removeAdmin(contact: Contact) {
+    public static async removeAdmins(contacts: Contact[]) {
         let data = await Statistics.read();
-        const contactId = contact.id._serialized;
-        if (contactId in data.admins) {
-            data.admins.splice(data.admins.indexOf(contactId), 1);
-            return contactId
+        for (const contact of contacts) {
+            const index = data.admins.indexOf(contact.id._serialized)
+            if (index != -1) {
+                data.admins.splice(index, 1)
+            }
         }
-        else {
-            return false
-        }
+        await Statistics.write(data);
     }
 
     public static async isAdmin(contact: Contact) {
         const data = await Statistics.read();
-        if (contact.id._serialized in data.admins || Whatsapp.client.info.wid.user == contact.id.user) {return true}
-        return false
+        return (contact.id._serialized in data.admins || Whatsapp.client.info.wid._serialized == contact.id._serialized)
     }
 
     public static async banUser(contact: Contact, chat: Chat) {
-        const data = await Statistics.readChat(chat);
-        console.log(data)
+        let data = await Statistics.readChat(chat);
         if (data.bannedUsers.indexOf(contact.id._serialized) == -1) {data.bannedUsers.push(contact.id._serialized)}
         await Statistics.write(data);
     }
 
     public static async unbanUser(contact: Contact, chat: Chat) {
-        const data = await Statistics.readChat(chat);
+        let data = await Statistics.readChat(chat);
         const userIndex = data.bannedUsers.indexOf(contact.id._serialized)
         if (userIndex != -1) {delete data.bannedUsers[userIndex]}
         return
@@ -74,18 +71,17 @@ export default class Statistics {
 
     public static async getBannedUsers(chat: Chat) {
         const data = await Statistics.readChat(chat);
-        console.log(data);
         return data.bannedUsers
     }
 
     public static async readChat(chat: Chat) {
-        const chatId: string = chat.id._serialized;
         return await Statistics.validateChat(chat);
     }
     
-    public static async write(newData: any) {
+    public static async write(newData) {
         const jsonData: string = JSON.stringify(newData);
-        await fs.writeFileSync(Statistics.path, jsonData, {encoding: "utf8"});
+        await fs.writeFileSync(Statistics.path, jsonData);
+        console.log((await Statistics.read()).admins)
         return newData;
     }
 

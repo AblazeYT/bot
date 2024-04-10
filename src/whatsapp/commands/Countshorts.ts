@@ -5,7 +5,7 @@ export default class CountshortsCommand extends WACommand {
     public static readonly commandName = "countshorts";
     public static readonly description = "How many Youtube Shorts have been sent in this chat?";
     public static readonly aliases: string[] = ["shortcount", "shortc", "countshort"];
-    public static readonly usage = "countshorts";
+    public static readonly usage = "";
 
     public async execute(message: Message, args: string[]) {
         if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}

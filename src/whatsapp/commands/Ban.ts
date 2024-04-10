@@ -3,11 +3,13 @@ import Whatsapp from "../Whatsapp";
 import Stats from "../Statistics";
 import WACommand from "./WACommand.base";
 
+// this command is not functional right now come back later
+
 export default class BanCommand extends WACommand {
     public static readonly commandName = "ban";
     public static readonly description = "yippee";
     public static readonly aliases: string[] = ["kill"];
-    public static readonly usage = "ban";
+    public static readonly usage = "Work in Progress";
 
     public async execute(message: Message, args: string[]) {
         message.react('⏳');

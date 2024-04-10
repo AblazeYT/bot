@@ -4,8 +4,8 @@ import WACommand from "./WACommand.base";
 export default class ContactCommand extends WACommand {
     public static readonly commandName = "contact";
     public static readonly description = "Get a contact's ID";
-    public static readonly aliases: string[] = [];
-    public static readonly usage = "contact";
+    public static readonly aliases: string[] = ["id"];
+    public static readonly usage = "{reply to message?}";
 
     public async execute(message: Message, args: string[]) {
         if (message.hasQuotedMsg) {message = await message.getQuotedMessage();}

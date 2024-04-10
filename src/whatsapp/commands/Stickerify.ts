@@ -5,7 +5,7 @@ export default class StickerifyCommand extends WACommand {
     public static readonly commandName = "stickerify";
     public static readonly description = "Turn any image into a sticker!";
     public static readonly aliases: string[] = ["sticker", "stick"];
-    public static readonly usage = "stickerify [attach: image/video]";
+    public static readonly usage = "[attach or reply: image/video]";
 
     public async execute(message: Message, args: string[]) {
         message.react('⏳')
